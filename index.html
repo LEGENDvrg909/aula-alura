@@ -21,8 +21,10 @@
                 <span class="texto-saldo">MOEDAS<strong id="moedas">0</strong></span>
             </div>
             <span id="badge-administrador" class="badge-administrador hidden">ADMIN</span>
+            <button id="botao-admin-auth" class="botao-admin-auth hidden" type="button">Entrar com GitHub</button>
             <button id="abrir-loja" type="button">Boneco e roupas</button>
         </div>
+        <p id="status-admin-auth" class="status-admin-auth hidden" role="status" aria-live="polite"></p>
 
         <div id="inicio" class="etapa-inicial">
             <div class="opcoes-jogo">
@@ -260,5 +262,8 @@
 
     <script src="perguntas.js"></script>
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <script src="supabase-config.js"></script>
+    <script src="supabase-auth.js"></script>
 </body>
 </html>

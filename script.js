@@ -68,7 +68,6 @@ function carregarProgresso() {
   try {
     const progresso = JSON.parse(localStorage.getItem("quiziz-progresso") || "{}");
     state.moedas = Number.isFinite(progresso.moedas) ? Math.max(0, progresso.moedas) : 0;
-    state.administrador = progresso.administrador === true;
     state.roupasCompradas = Array.isArray(progresso.roupasCompradas) ? progresso.roupasCompradas : [];
     state.roupaEquipada = {
       cabelo: progresso.roupaEquipada?.cabelo || "padrao",
@@ -105,7 +104,6 @@ function salvarProgresso() {
   try {
     localStorage.setItem("quiziz-progresso", JSON.stringify({
       moedas: state.moedas,
-      administrador: state.administrador,
       roupasCompradas: state.roupasCompradas,
       roupaEquipada: state.roupaEquipada
     }));
@@ -442,6 +440,14 @@ setInterval(() => {
 
 botaoReiniciar.addEventListener("click", reiniciarQuiz);
 botaoIniciar.addEventListener("click", iniciarQuiz);
+window.addEventListener("quiziz-admin-state", (evento) => {
+  state.administrador = evento.detail?.isAdmin === true;
+  if (state.administrador) {
+    state.moedas = 9000;
+    salvarProgresso();
+  }
+  atualizarMoedas();
+});
 caixaResultado.style.display = "none";
 botaoReiniciar.style.display = "none";
 areaQuiz.classList.add("hidden");
@@ -451,15 +457,6 @@ etapaInicial.classList.remove("hidden");
 formularioJogador.classList.add("hidden");
 areaDiversidade.classList.add("hidden");
 carregarProgresso();
-const parametrosPagina = new URLSearchParams(window.location.search);
-if (parametrosPagina.get("perfil") === "admin") {
-  state.administrador = true;
-  state.moedas = 9000;
-  salvarProgresso();
-  parametrosPagina.delete("perfil");
-  const consulta = parametrosPagina.toString();
-  window.history.replaceState(null, "", `${window.location.pathname}${consulta ? `?${consulta}` : ""}${window.location.hash}`);
-}
 atualizarMoedas();
 atualizarFase();
 atualizarBoneco();

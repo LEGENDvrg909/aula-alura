@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=shop-layout">
     <title>Você decide o futuro da IA</title>
 </head>
 <body>
@@ -11,24 +11,254 @@
 
     <div class="caixa-principal">
         <h1>Você decide o futuro da IA</h1>
+        <div class="acoes-jogador">
+            <div class="carteira-saldo" aria-label="Saldo de moedas">
+                <svg class="icone-carteira" viewBox="0 0 48 48" aria-hidden="true">
+                    <path class="carteira-corpo" d="M10 13h25a4 4 0 0 1 4 4v19a4 4 0 0 1-4 4H12a5 5 0 0 1-5-5V17a4 4 0 0 1 3-4Z" />
+                    <path class="carteira-tampa" d="M31 19h11v13H31a6.5 6.5 0 0 1 0-13Z" />
+                    <circle class="carteira-botao" cx="33" cy="25.5" r="1.7" />
+                </svg>
+                <span class="texto-saldo">MOEDAS<strong id="moedas">0</strong></span>
+            </div>
+            <span id="badge-administrador" class="badge-administrador hidden">ADMIN</span>
+            <button id="abrir-loja" type="button">Boneco e roupas</button>
+        </div>
 
         <div id="inicio" class="etapa-inicial">
+            <div class="opcoes-jogo">
+                <button type="button" class="opcao-jogo active" data-tipo="diversidade">
+                    <span class="titulo-opcao">Diversidade da IA</span>
+                </button>
+
+                <button type="button" class="opcao-jogo" data-tipo="quiziz">
+                    <span class="titulo-opcao">Quiziz</span>
+                </button>
+            </div>
+        </div>
+
+        <section id="area-diversidade" class="area-diversidade hidden" aria-labelledby="titulo-diversidade">
+            <h2 id="titulo-diversidade">Diversidade da inteligência artificial</h2>
+            <p class="introducao-diversidade">A inteligência artificial já faz parte de muitas atividades do dia a dia. Entender como ela funciona ajuda a aproveitar seus benefícios e perceber quando é preciso ter cuidado.</p>
+
+            <article class="texto-diversidade">
+                <h3>O que é inteligência artificial?</h3>
+                <p>Inteligência artificial, ou IA, é um conjunto de tecnologias que permite que computadores realizem tarefas que normalmente exigem capacidades humanas, como reconhecer padrões, compreender linguagem, fazer previsões e gerar conteúdo.</p>
+            </article>
+
+            <article class="texto-diversidade">
+                <h3>Para que ela serve?</h3>
+                <p>A IA pode ajudar a organizar informações, traduzir idiomas, recomendar músicas e filmes, identificar problemas em imagens médicas, apoiar pesquisas e automatizar tarefas repetitivas. Ela também pode ajudar pessoas a criar textos, imagens, sons e ideias.</p>
+            </article>
+
+            <article class="texto-diversidade">
+                <h3>Como pode ser usada?</h3>
+                <p>Na educação, pode explicar um assunto de outras formas e apoiar estudos. Na saúde, pode ajudar profissionais a analisar dados. No transporte, pode sugerir rotas. Na criação, pode servir como ponto de partida para projetos. Em todos esses casos, as pessoas continuam tomando decisões e conferindo os resultados.</p>
+            </article>
+
+            <article class="texto-diversidade">
+                <h3>Diversidade e inclusão</h3>
+                <p>Uma IA aprende a partir de exemplos e dados criados por pessoas. Se esses dados não representam diferentes grupos e realidades, o sistema pode cometer erros ou tratar pessoas de forma injusta. Por isso, equipes diversas, testes cuidadosos e a participação das comunidades afetadas são importantes.</p>
+            </article>
+
+            <article class="texto-diversidade">
+                <h3>Use com responsabilidade</h3>
+                <p>Confira informações importantes em fontes confiáveis, proteja seus dados pessoais e não compartilhe conteúdo gerado como se fosse necessariamente verdadeiro. A IA pode errar, reproduzir preconceitos ou inventar informações. Use-a como apoio, mantendo o pensamento crítico e a responsabilidade humana.</p>
+            </article>
+
+            <div class="acoes-diversidade">
+                <button id="voltar-inicio" type="button">Voltar ao início</button>
+                <button id="ir-quiz" type="button">Ir para o Quiziz</button>
+            </div>
+        </section>
+
+        <div id="formulario-jogador" class="formulario-jogador hidden">
             <label for="nome-jogador">Digite seu nome:</label>
             <input id="nome-jogador" type="text" maxlength="40" placeholder="Ex: Bryan" />
 
             <label for="idade-jogador">Digite sua idade:</label>
             <input id="idade-jogador" type="number" min="1" max="120" placeholder="Ex: 16" />
 
+            <button id="voltar-opcoes" type="button">Voltar às opções</button>
             <button id="iniciar-jogo" type="button">Começar</button>
         </div>
 
-        <div class="caixa-perguntas"></div>
-        <div class="caixa-alternativas"></div>
-        <div class="caixa-resultado">
-            <p class="texto-resultado"></p>
+        <div id="area-quiz" class="area-quiz">
+            <div class="painel-topo">
+                <span class="badge" id="fase-jogo">Rodada principal</span>
+            </div>
+
+            <div class="caixa-perguntas"></div>
+            <div class="caixa-alternativas"></div>
+            <div class="caixa-resultado">
+                <p class="texto-resultado"></p>
+            </div>
         </div>
+
         <button id="reiniciar" class="reiniciar" type="button">Jogar novamente</button>
+
+        <section id="loja-boneco" class="loja-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="titulo-loja">
+            <div class="loja-conteudo">
+                <header class="cabecalho-loja">
+                    <div>
+                        <p class="sobretitulo-loja">PERSONALIZAÇÃO</p>
+                        <h2 id="titulo-loja">Loja do boneco</h2>
+                    </div>
+                    <button id="fechar-loja" class="botao-fechar-loja" type="button" aria-label="Fechar loja">×</button>
+                </header>
+
+                <div class="conteudo-loja">
+                    <nav id="categorias-loja" class="categorias-loja" aria-label="Categorias da loja"></nav>
+
+                    <div class="catalogo-loja">
+                        <div class="saldo-loja">Seu saldo <strong><span id="saldo-loja">0</span> moedas</strong></div>
+                        <h3 id="titulo-categoria" class="titulo-categoria">Parte de cima</h3>
+                        <p id="contagem-itens" class="contagem-itens"></p>
+                        <div id="lista-roupas" class="lista-roupas"></div>
+                        <p id="mensagem-loja" class="mensagem-loja" role="status" aria-live="polite"></p>
+                    </div>
+
+                    <div class="area-boneco">
+                        <p id="fala-boneco" class="fala-boneco" aria-live="polite">Oi! Que bom te ver!</p>
+                        <div id="boneco" class="boneco" data-cabelo="padrao" data-camisa="padrao" data-acessorio="nenhum" data-chapeu="nenhum" data-calca="padrao" data-calcado="padrao" role="img" aria-label="Boneco usando roupa padrão">
+                            <svg class="avatar-2d" viewBox="0 0 260 360" aria-hidden="true" focusable="false">
+                                <defs>
+                                    <linearGradient id="pele" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0" stop-color="#ffd4ae" />
+                                        <stop offset="1" stop-color="#d88e68" />
+                                    </linearGradient>
+                                    <linearGradient id="camisa" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0" stop-color="#61ddcb" />
+                                        <stop offset="1" stop-color="#229d9b" />
+                                    </linearGradient>
+                                    <linearGradient id="tenis" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0" stop-color="#fffdf4" />
+                                        <stop offset="1" stop-color="#b9ccd1" />
+                                    </linearGradient>
+                                </defs>
+
+                                <g class="avatar-personagem">
+                                    <ellipse cx="130" cy="337" rx="70" ry="12" fill="#31515c" opacity=".16" />
+
+                                    <g class="avatar-pernas">
+                                        <path class="avatar-calca" d="M96 247h69l-5 66q-1 8-9 8h-13q-8 0-8-8l-3-42-4 42q-1 8-9 8h-13q-8 0-8-8z" />
+                                        <path class="avatar-bolsos-cargo" d="M101 272h16v19h-16zm39 0h16v19h-16z" />
+                                        <path class="avatar-tenis" d="M97 315q13 5 28 0l4 9q2 7-7 9H91q-8-2-4-10zm41 0q13 5 28 0l7 8q4 8-6 10h-31q-7-3-3-10z" />
+                                        <path d="M89 330h36m17 0h34" fill="none" stroke="#8299a2" stroke-width="3" stroke-linecap="round" />
+                                    </g>
+
+                                    <g transform="translate(84 164) scale(-1 1)">
+                                        <g class="avatar-braco avatar-braco-esquerdo">
+                                            <path d="M1 0q13 2 19 14l8 24 13 23q5 8-3 13-7 4-12-4L12 51q-5-5-7-13L-1 17Q-2 5 1 0z" fill="url(#pele)" />
+                                            <path d="M0 0q13 2 19 14l8 21-13 9L3 23-7 4z" fill="var(--shirt-color, #2aaea6)" />
+                                            <path d="M39 57q6 6 1 12-5 5-10 0l-8-10 10-7z" fill="url(#pele)" />
+                                            <path d="M4 11q8 3 12 11" fill="none" stroke="#ffe2ca" stroke-width="2" stroke-linecap="round" opacity=".65" />
+                                        </g>
+                                    </g>
+
+                                    <g class="avatar-moletom-capuz">
+                                        <path d="M91 157q5-20 39-22 33 2 39 22l-13 23h-52z" fill="#7359b5" />
+                                    </g>
+
+                                    <g class="avatar-tronco">
+                                        <path class="avatar-camiseta" d="M97 151q13-9 33-9t33 9q18 8 21 29l13 76q-66 21-134 0l13-76q3-21 21-29z" />
+                                        <path class="avatar-gola" d="m116 145 14 14 14-14 10 5-9 24h-30l-9-24z" />
+                                        <path class="avatar-bolso" d="M151 194h19v22h-19z" />
+                                        <path class="avatar-costura-jaqueta" d="M130 164v84m-25-48h12m27 0h12" />
+                                        <path class="avatar-cadarco" d="M121 176v28m18-28v28" />
+                                        <path class="avatar-gravata" d="m125 164 5 4 5-4 5 8-5 10 5 42-10 7-10-7 5-42-5-10z" />
+                                    </g>
+
+                                    <g transform="translate(176 164)">
+                                        <g id="braco-direito" class="avatar-braco-direito">
+                                            <path d="M1 0q13 2 19 14l8 24 13 23q5 8-3 13-7 4-12-4L12 51q-5-5-7-13L-1 17Q-2 5 1 0z" fill="url(#pele)" />
+                                            <path d="M0 0q13 2 19 14l8 21-13 9L3 23-7 4z" fill="var(--shirt-color, #2aaea6)" />
+                                            <path d="M39 57q6 6 1 12-5 5-10 0l-8-10 10-7z" fill="url(#pele)" />
+                                            <path d="M4 11q8 3 12 11" fill="none" stroke="#ffe2ca" stroke-width="2" stroke-linecap="round" opacity=".65" />
+                                        </g>
+                                    </g>
+
+                                    <path d="M116 132h28v24h-28z" fill="url(#pele)" />
+                                    <ellipse cx="130" cy="88" rx="52" ry="59" fill="url(#pele)" />
+                                    <ellipse cx="78" cy="100" rx="10" ry="15" fill="#e6a17d" />
+                                    <ellipse cx="182" cy="100" rx="10" ry="15" fill="#e6a17d" />
+                                    <ellipse cx="78" cy="100" rx="4" ry="7" fill="#bd7559" opacity=".55" />
+                                    <ellipse cx="182" cy="100" rx="4" ry="7" fill="#bd7559" opacity=".55" />
+
+                                    <g class="avatar-cabelo avatar-cabelo-curto">
+                                        <path class="avatar-massa-cabelo" d="M78 83q-2-49 39-59 43-11 67 25 8 13 7 36-11-12-24-13-11 0-20 8-11-18-28-12-14 5-21 19-8-12-20-4z" />
+                                        <path d="M101 53q13-17 29-12" fill="none" stroke="#80626a" stroke-width="5" stroke-linecap="round" opacity=".5" />
+                                        <path class="avatar-mechas-azuis" d="M145 33q16 4 22 17l-8 5q-5-11-17-15z" fill="#53d5e8" />
+                                    </g>
+
+                                    <g class="avatar-cabelo avatar-cabelo-ondulado">
+                                        <path class="avatar-massa-cabelo" d="M77 87q-3-61 51-66 56 0 63 61l-2 104q-13 7-22-1l-3-85q-8 10-18 4-8-6-4-16-13 12-25 4-8-5-5-16-12 12-25 6-7-4-6-14-8 12-18 5z" />
+                                        <path d="M87 118q10 10 1 25m28-48q10 9 0 18m61 28q-10 10-2 21" fill="none" stroke="#826157" stroke-width="5" stroke-linecap="round" opacity=".55" />
+                                    </g>
+
+                                    <g class="avatar-cabelo avatar-cabelo-afro">
+                                        <path class="avatar-massa-cabelo" d="M77 95q-9-22 4-42 7-13 21-17 6-22 31-22 23-1 31 16 22 3 28 25 9 24-2 43l-9 1q-3-25-20-27-11 0-17 11-12-19-27-13-12 5-15 18-10-11-20-1z" />
+                                        <g fill="#60443e">
+                                            <circle cx="91" cy="56" r="13"/><circle cx="111" cy="38" r="13"/><circle cx="132" cy="31" r="13"/><circle cx="153" cy="38" r="13"/><circle cx="171" cy="54" r="13"/>
+                                        </g>
+                                    </g>
+
+                                    <g class="avatar-cabelo avatar-cabelo-coque">
+                                        <path class="avatar-massa-cabelo" d="M78 84q-3-57 51-60 53 0 62 58-13-10-23-10-13 0-20 12-13-16-28-11-13 4-18 15-10-10-24-4z" />
+                                        <circle cx="130" cy="28" r="20" fill="#39303b" />
+                                        <path d="M118 27q10-13 20-7" fill="none" stroke="#75616c" stroke-width="4" stroke-linecap="round" />
+                                    </g>
+
+                                    <g class="avatar-rosto">
+                                        <path d="M101 86q10-7 19 0m20 0q10-7 19 0" fill="none" stroke="#49363a" stroke-width="4" stroke-linecap="round" />
+                                        <ellipse cx="111" cy="101" rx="5" ry="7" fill="#263641" />
+                                        <ellipse cx="149" cy="101" rx="5" ry="7" fill="#263641" />
+                                        <circle cx="113" cy="99" r="1.5" fill="#fff" />
+                                        <circle cx="151" cy="99" r="1.5" fill="#fff" />
+                                        <path d="M129 104q-5 12 2 12" fill="none" stroke="#bd7559" stroke-width="3" stroke-linecap="round" />
+                                        <path d="M119 127q11 11 23 0" fill="none" stroke="#984e50" stroke-width="3" stroke-linecap="round" />
+                                        <ellipse cx="98" cy="119" rx="9" ry="4" fill="#ed998d" opacity=".38" />
+                                        <ellipse cx="162" cy="119" rx="9" ry="4" fill="#ed998d" opacity=".38" />
+                                    </g>
+
+                                    <g class="avatar-chapeu avatar-bone">
+                                        <path d="M79 78q3-52 51-54 48 2 51 54-45-13-102 0z" fill="#efbd43" />
+                                        <path d="M80 76q52-14 103 0 16 3 28 13-33 13-82 0-23-6-50-3z" fill="#d9992b" />
+                                        <path d="M130 32v37m-26-31q18-10 34-7" fill="none" stroke="#ffe389" stroke-width="3" stroke-linecap="round" opacity=".7" />
+                                    </g>
+
+                                    <g class="avatar-chapeu avatar-gorro">
+                                        <path d="M79 76q-2-60 51-62 54 2 51 62l-12 10H91z" fill="#df5f62" />
+                                        <path d="M87 71h87v18q-42 12-87 0z" fill="#f2d0bd" />
+                                        <circle cx="130" cy="13" r="10" fill="#f28a83" />
+                                        <path d="M99 34q31-19 62 0" fill="none" stroke="#f58b83" stroke-width="3" opacity=".7" />
+                                    </g>
+
+                                    <g class="avatar-acessorio avatar-oculos">
+                                        <rect x="91" y="91" width="34" height="23" rx="8" fill="#a7e8ec" fill-opacity=".28" stroke="#254757" stroke-width="4" />
+                                        <rect x="135" y="91" width="34" height="23" rx="8" fill="#a7e8ec" fill-opacity=".28" stroke="#254757" stroke-width="4" />
+                                        <path d="M125 99q5-5 10 0m-44 0-8-3m86 3 8-3" fill="none" stroke="#254757" stroke-width="4" stroke-linecap="round" />
+                                    </g>
+                                    <g class="avatar-acessorio avatar-oculos-redondos">
+                                        <circle cx="109" cy="102" r="16" fill="#a7e8ec" fill-opacity=".2" stroke="#254757" stroke-width="4" />
+                                        <circle cx="151" cy="102" r="16" fill="#a7e8ec" fill-opacity=".2" stroke="#254757" stroke-width="4" />
+                                        <path d="M125 100h10m-42 0-8-3m82 3 8-3" fill="none" stroke="#254757" stroke-width="4" stroke-linecap="round" />
+                                    </g>
+                                    <g class="avatar-acessorio avatar-fones">
+                                        <path d="M91 94q0-41 39-41t39 41" fill="none" stroke="#38798a" stroke-width="9" stroke-linecap="round" />
+                                        <rect x="82" y="91" width="16" height="32" rx="7" fill="#53c6d0" />
+                                        <rect x="162" y="91" width="16" height="32" rx="7" fill="#53c6d0" />
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                        <p class="legenda-boneco">Seu personagem</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
+
+    <script src="perguntas.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

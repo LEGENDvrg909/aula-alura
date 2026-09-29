@@ -17,12 +17,13 @@ body {
   color: var(--cor-texto);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   min-height: 100vh;
   margin: 0;
   font-family: Arial, sans-serif;
-  padding: 20px;
-  overflow: hidden;
+  padding: 32px 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .raios-animados {
@@ -80,6 +81,146 @@ h1 {
   font-size: clamp(1.8rem, 4vw, 2.6rem);
 }
 
+.acoes-jogador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: -4px 0 22px;
+}
+
+.acoes-jogador button {
+  padding: 9px 14px;
+  text-align: center;
+}
+
+.carteira-saldo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 58px;
+  padding: 6px 16px 6px 10px;
+  border: 1px solid rgba(244, 197, 66, 0.64);
+  border-radius: 12px;
+  background: linear-gradient(110deg, rgba(244, 197, 66, 0.15), rgba(43, 222, 253, 0.08));
+  box-shadow: 0 0 18px rgba(244, 197, 66, 0.1);
+}
+
+.badge-administrador {
+  padding: 8px 10px;
+  border: 1px solid rgba(244, 197, 66, 0.55);
+  border-radius: 8px;
+  background: rgba(244, 197, 66, 0.12);
+  color: #f4c542;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.icone-carteira {
+  display: block;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+}
+
+.carteira-corpo {
+  fill: #52d6c7;
+}
+
+.carteira-tampa {
+  fill: #e4bd59;
+}
+
+.carteira-botao {
+  fill: #152b36;
+}
+
+.texto-saldo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  color: #f4c542;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.texto-saldo strong {
+  color: #fff4ca;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.area-quiz {
+  display: block;
+}
+
+.area-diversidade {
+  text-align: left;
+  max-height: calc(100vh - 180px);
+  overflow-y: auto;
+  padding: 0 8px 8px;
+}
+
+.area-diversidade h2 {
+  margin: 0 0 12px;
+  color: var(--cor-destaque);
+  font-size: 1.55rem;
+}
+
+.introducao-diversidade {
+  margin: 0 0 22px;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+.texto-diversidade {
+  padding: 15px 0;
+  border-top: 1px solid var(--cor-borda);
+}
+
+.texto-diversidade h3 {
+  margin: 0 0 7px;
+  color: var(--cor-destaque);
+  font-size: 1.05rem;
+}
+
+.texto-diversidade p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.acoes-diversidade {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.acoes-diversidade button {
+  flex: 1;
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.painel-topo {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  background: rgba(43, 222, 253, 0.08);
+  border: 1px solid var(--cor-borda);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 0.92rem;
+}
+
 .caixa-perguntas {
   margin-bottom: 20px;
   line-height: 1.6;
@@ -120,13 +261,72 @@ button:hover {
   max-width: 420px;
 }
 
-.etapa-inicial label {
+.formulario-jogador {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+  margin: 0 auto 20px;
+  max-width: 420px;
+}
+
+.opcoes-jogo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.opcao-jogo {
+  width: 100%;
+  padding: 16px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--cor-borda);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--cor-texto);
+  text-align: center;
+  font-weight: 700;
+}
+
+.opcao-jogo.active {
+  background: rgba(43, 222, 253, 0.15);
+  border-color: var(--cor-destaque);
+  box-shadow: 0 0 12px rgba(43, 222, 253, 0.2);
+}
+
+.titulo-opcao {
+  display: block;
+}
+
+.area-texto-inicial {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--cor-borda);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.area-texto-inicial h2 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  color: var(--cor-destaque);
+}
+
+.area-texto-inicial p {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--cor-texto);
+}
+
+.etapa-inicial label,
+.formulario-jogador label {
   color: var(--cor-texto);
   font-weight: bold;
   margin-top: 6px;
 }
 
-.etapa-inicial input {
+.etapa-inicial input,
+.formulario-jogador input {
   width: 100%;
   padding: 12px 14px;
   border-radius: 12px;
@@ -136,7 +336,8 @@ button:hover {
   font-size: 1rem;
 }
 
-.etapa-inicial input:focus {
+.etapa-inicial input:focus,
+.formulario-jogador input:focus {
   outline: none;
   border-color: var(--cor-destaque);
   box-shadow: 0 0 0 2px rgba(43, 222, 253, 0.15);
@@ -168,4 +369,1151 @@ button:hover {
 
 .reiniciar:hover {
   filter: brightness(1.08);
+}
+
+.loja-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 5, 12, 0.82);
+  backdrop-filter: blur(8px);
+}
+
+.loja-conteudo {
+  width: min(980px, 100%);
+  max-height: min(760px, 92vh);
+  overflow-y: auto;
+  padding: 24px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 16px;
+  background: #0b1320;
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.55);
+}
+
+.cabecalho-loja {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.cabecalho-loja h2 {
+  margin: 0;
+  color: var(--cor-destaque);
+  font-size: 1.5rem;
+}
+
+.sobretitulo-loja {
+  margin: 0 0 5px;
+  color: #a9c6ce;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.botao-fechar-loja {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  padding: 0;
+  text-align: center;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.conteudo-loja {
+  display: grid;
+  grid-template-columns: 116px minmax(0, 1fr) minmax(280px, 0.95fr);
+  align-items: stretch;
+  gap: 18px;
+  padding-top: 20px;
+}
+
+.area-boneco {
+  display: flex;
+  min-height: 410px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(215, 249, 255, 0.3);
+  border-radius: 12px;
+  background: radial-gradient(ellipse at 50% 40%, #f9fff8 0%, #deeff0 61%, #bddbe0 100%);
+}
+
+.fala-boneco {
+  min-height: 34px;
+  margin: 0 0 5px;
+  padding: 7px 13px;
+  border-radius: 14px 14px 14px 4px;
+  background: #e8fbf7;
+  color: #163641;
+  font-size: 0.85rem;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(8px) scale(0.92);
+}
+
+.fala-boneco.aparecendo {
+  animation: aparecer-fala 450ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes aparecer-fala {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.legenda-boneco {
+  margin: 0;
+  color: #496772;
+  font-size: 0.9rem;
+}
+
+.boneco {
+  position: relative;
+  width: 238px;
+  height: 330px;
+  flex: 0 0 auto;
+  transform: none;
+  filter: none;
+}
+
+.boneco-cabeca {
+  position: absolute;
+  top: 10px;
+  left: 56px;
+  z-index: 2;
+  width: 78px;
+  height: 86px;
+  border: 2px solid rgba(112, 66, 45, 0.12);
+  border-radius: 46% 46% 45% 45%;
+  background: linear-gradient(145deg, #f4c7a2, #d9966f);
+  box-shadow: inset -7px -5px 0 rgba(141, 76, 50, 0.08);
+}
+
+.boneco-cabeca::before,
+.boneco-cabeca::after {
+  position: absolute;
+  top: 36px;
+  z-index: -1;
+  width: 13px;
+  height: 20px;
+  border-radius: 50%;
+  background: #dfa17b;
+  content: "";
+}
+
+.boneco-cabeca::before {
+  left: -8px;
+}
+
+.boneco-cabeca::after {
+  right: -8px;
+}
+
+.boneco-cabelo {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 75px;
+  height: 34px;
+  border-radius: 54% 55% 32% 22%;
+  background: linear-gradient(145deg, #59444b, #282532 72%);
+  box-shadow: 0 4px 3px rgba(50, 32, 37, 0.2);
+}
+
+.boneco-cabelo::after {
+  position: absolute;
+  right: 3px;
+  bottom: -5px;
+  width: 26px;
+  height: 17px;
+  border-radius: 0 0 60% 30%;
+  background: #342c37;
+  content: "";
+  transform: rotate(-14deg);
+}
+
+.boneco-sobrancelhas {
+  position: absolute;
+  top: 33px;
+  left: 21px;
+  width: 12px;
+  height: 3px;
+  border-radius: 5px;
+  background: #49363a;
+  box-shadow: 25px 0 #49363a;
+}
+
+.boneco-olhos {
+  position: absolute;
+  top: 43px;
+  left: 25px;
+  width: 6px;
+  height: 8px;
+  border-radius: 50%;
+  background: #243340;
+  box-shadow: 25px 0 #243340;
+}
+
+.boneco-sorriso {
+  position: absolute;
+  top: 62px;
+  left: 31px;
+  width: 18px;
+  height: 9px;
+  border-bottom: 2px solid #9a4f4d;
+  border-radius: 0 0 50% 50%;
+}
+
+.boneco-oculos {
+  position: absolute;
+  top: 36px;
+  left: 8px;
+  display: none;
+  width: 61px;
+  height: 20px;
+  border: 3px solid #233a48;
+  border-radius: 8px;
+  background: rgba(191, 239, 243, 0.25);
+}
+
+.boneco-oculos::after {
+  position: absolute;
+  top: 5px;
+  left: 21px;
+  width: 12px;
+  border-top: 3px solid #233a48;
+  content: "";
+}
+
+.boneco-chapeu {
+  position: absolute;
+  top: -17px;
+  left: 8px;
+  display: none;
+  width: 57px;
+  height: 27px;
+  border: 2px solid rgba(128, 86, 13, 0.25);
+  border-radius: 30px 30px 4px 4px;
+  background: linear-gradient(145deg, #ffe16b, #e8ad30);
+  box-shadow: inset 0 5px rgba(255, 255, 255, 0.25);
+}
+
+.boneco-chapeu::after {
+  position: absolute;
+  right: -14px;
+  bottom: -1px;
+  width: 39px;
+  height: 9px;
+  border-radius: 50%;
+  background: #d69b24;
+  content: "";
+}
+
+.boneco-pescoco {
+  position: absolute;
+  top: 88px;
+  left: 81px;
+  z-index: 1;
+  width: 28px;
+  height: 22px;
+  background: linear-gradient(90deg, #d9966f, #efb58e);
+}
+
+.boneco-corpo {
+  --cor-roupa: #2aaea6;
+  position: absolute;
+  top: 101px;
+  left: 43px;
+  z-index: 2;
+  width: 96px;
+  height: 100px;
+  border: 1px solid rgba(15, 64, 79, 0.2);
+  border-radius: 31px 31px 18px 18px;
+  background: linear-gradient(145deg, #55d1c0, var(--cor-roupa) 60%, #188c91);
+  box-shadow: inset 7px 0 rgba(255, 255, 255, 0.11), inset -7px 0 rgba(6, 62, 75, 0.1);
+}
+
+.boneco-gola {
+  position: absolute;
+  top: -1px;
+  left: 33px;
+  width: 30px;
+  height: 20px;
+  background: #e8fbf7;
+  clip-path: polygon(0 0, 50% 45%, 100% 0, 76% 100%, 25% 100%);
+}
+
+.boneco-bolso {
+  position: absolute;
+  top: 45px;
+  right: 13px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(240, 255, 255, 0.65);
+  border-radius: 4px 4px 7px 7px;
+}
+
+.boneco-bolso::after {
+  position: absolute;
+  top: 4px;
+  left: 7px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(240, 255, 255, 0.85);
+  content: "";
+}
+
+.boneco-braco {
+  position: absolute;
+  top: 15px;
+  z-index: -1;
+  width: 25px;
+  height: 76px;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #d9966f, #efb58e 65%, #d9966f);
+  transform-origin: 50% 10px;
+}
+
+.boneco-braco::before {
+  position: absolute;
+  top: 0;
+  left: -1px;
+  width: 27px;
+  height: 30px;
+  border-radius: 12px 12px 8px 8px;
+  background: var(--cor-roupa);
+  content: "";
+}
+
+.boneco-mao {
+  position: absolute;
+  bottom: -8px;
+  left: 1px;
+  width: 23px;
+  height: 22px;
+  border-radius: 45% 45% 55% 55%;
+  background: linear-gradient(90deg, #d9966f, #f0b58d);
+}
+
+.braco-esquerdo {
+  left: -18px;
+  transform: rotate(8deg);
+}
+
+.braco-direito {
+  right: -18px;
+  transform: rotate(-9deg);
+}
+
+.boneco.acenando .braco-direito {
+  animation: acenar-com-braco 1.8s ease-in-out 2;
+}
+
+@keyframes acenar-com-braco {
+  0%, 100% { transform: rotate(-9deg); }
+  18%, 48%, 78% { transform: rotate(-125deg); }
+  33%, 63%, 90% { transform: rotate(-92deg); }
+}
+
+.boneco-pernas {
+  position: absolute;
+  top: 185px;
+  left: 54px;
+  display: flex;
+  gap: 10px;
+}
+
+.boneco-pernas span {
+  position: relative;
+  width: 28px;
+  height: 68px;
+  border-radius: 0 0 9px 9px;
+  background: linear-gradient(90deg, #32455f, #4a6280 55%, #2c3e57);
+}
+
+.boneco[data-camisa="azul"] .boneco-corpo {
+  --cor-roupa: #4387e8;
+  background: linear-gradient(145deg, #79b2ff, #4387e8 58%, #316ac1);
+}
+
+.boneco[data-camisa="azul"] .boneco-bolso {
+  border-color: rgba(237, 247, 255, 0.8);
+}
+
+.boneco[data-camisa="coral"] .boneco-corpo {
+  --cor-roupa: #f07868;
+  background: linear-gradient(145deg, #ff9c86, #f07868 58%, #cf5d58);
+}
+
+.boneco[data-camisa="coral"] .boneco-gola {
+  background: #ffe6d8;
+}
+
+.boneco[data-camisa="verde"] .boneco-corpo {
+  --cor-roupa: #48a87c;
+  background: linear-gradient(90deg, #287f67, #48a87c 18%, #48a87c 82%, #287f67);
+}
+
+.boneco[data-camisa="verde"] .boneco-corpo::after {
+  position: absolute;
+  top: 19px;
+  left: 47px;
+  height: 70px;
+  border-left: 3px solid rgba(230, 255, 237, 0.75);
+  content: "";
+}
+
+.boneco[data-camisa="verde"] .boneco-bolso {
+  right: 7px;
+  width: 18px;
+  height: 22px;
+  border-color: rgba(224, 255, 232, 0.8);
+}
+
+.boneco-pernas span::after {
+  position: absolute;
+  bottom: -7px;
+  left: -7px;
+  width: 43px;
+  height: 15px;
+  border-radius: 9px 12px 7px 7px;
+  background: linear-gradient(160deg, #eff4ed, #a8bbc1);
+  content: "";
+}
+
+.boneco-pernas span::before {
+  position: absolute;
+  bottom: -7px;
+  left: -2px;
+  z-index: 1;
+  width: 29px;
+  height: 3px;
+  border-radius: 50%;
+  background: #718690;
+  content: "";
+}
+
+.boneco[data-acessorio="oculos"] .boneco-oculos,
+.boneco[data-chapeu="bone"] .boneco-chapeu {
+  display: block;
+}
+
+.boneco[data-cabelo="castanho"] .boneco-cabelo,
+.boneco[data-cabelo="castanho"] .boneco-cabelo::after {
+  background: linear-gradient(145deg, #a9683c, #603d32 78%);
+}
+
+.boneco[data-cabelo="ondulado"] .boneco-cabelo {
+  height: 38px;
+  background: repeating-radial-gradient(ellipse at 50% 100%, #49302b 0 5px, #765046 6px 9px);
+}
+
+.boneco[data-cabelo="afro"] .boneco-cabelo {
+  top: -9px;
+  left: -3px;
+  width: 75px;
+  height: 46px;
+  border-radius: 48%;
+  background: radial-gradient(circle at 35% 35%, #765046, #302321 72%);
+  box-shadow: 0 0 0 4px #302321;
+}
+
+.boneco[data-cabelo="coque"] .boneco-cabelo::before {
+  position: absolute;
+  top: -16px;
+  left: 22px;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: #302b38;
+  content: "";
+}
+
+.boneco:not(.com-modelo-3d)[data-chapeu="bone"] .boneco-cabelo,
+.boneco:not(.com-modelo-3d)[data-chapeu="gorro"] .boneco-cabelo {
+  display: none;
+}
+
+.boneco[data-chapeu="gorro"] .boneco-chapeu {
+  top: -22px;
+  left: 6px;
+  display: block;
+  width: 57px;
+  height: 35px;
+  border-radius: 28px 28px 6px 6px;
+  background: linear-gradient(145deg, #ff8880, #c9444c);
+}
+
+.boneco[data-chapeu="gorro"] .boneco-chapeu::after {
+  right: -2px;
+  bottom: 0;
+  left: -2px;
+  width: auto;
+  height: 9px;
+  border-radius: 4px;
+  background: #f2c5b5;
+}
+
+.boneco[data-chapeu="gorro"] .boneco-chapeu::before {
+  position: absolute;
+  top: -10px;
+  left: 22px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ffaaa0;
+  content: "";
+}
+
+.boneco[data-calca="jeans"] .boneco-pernas span {
+  background: linear-gradient(90deg, #245b92, #4385bd 55%, #245b92);
+}
+
+.boneco-pernas span::after {
+  background: linear-gradient(160deg, #4a5661, #26323c);
+}
+
+.boneco[data-calcado="branco"] .boneco-pernas span::after {
+  background: linear-gradient(160deg, #ffffff, #c9d6d8);
+}
+
+.avatar-2d {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 12px 10px rgba(31, 70, 76, 0.18));
+}
+
+.avatar-personagem {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+
+.avatar-cabelo,
+.avatar-chapeu,
+.avatar-acessorio,
+.avatar-gravata,
+.avatar-moletom-capuz,
+.avatar-costura-jaqueta,
+.avatar-bolsos-cargo,
+.avatar-cadarco,
+.avatar-mechas-azuis {
+  display: none;
+}
+
+#boneco[data-cabelo="padrao"] .avatar-cabelo-curto,
+#boneco[data-cabelo="castanho"] .avatar-cabelo-curto,
+#boneco[data-cabelo="azul"] .avatar-cabelo-curto,
+#boneco[data-cabelo="ondulado"] .avatar-cabelo-ondulado,
+#boneco[data-cabelo="afro"] .avatar-cabelo-afro,
+#boneco[data-cabelo="coque"] .avatar-cabelo-coque {
+  display: inline;
+}
+
+#boneco[data-cabelo="azul"] .avatar-mechas-azuis {
+  display: inline;
+}
+
+#boneco[data-chapeu="bone"] .avatar-cabelo,
+#boneco[data-chapeu="gorro"] .avatar-cabelo,
+#boneco[data-chapeu="bone"] .avatar-mechas-azuis,
+#boneco[data-chapeu="gorro"] .avatar-mechas-azuis {
+  display: none !important;
+}
+
+#boneco[data-chapeu="bone"] .avatar-bone,
+#boneco[data-chapeu="gorro"] .avatar-gorro {
+  display: inline;
+}
+
+#boneco[data-cabelo="castanho"] {
+  --hair-color: #87502f;
+}
+
+#boneco[data-cabelo="afro"] {
+  --hair-color: #493029;
+}
+
+#boneco[data-cabelo="ondulado"] {
+  --hair-color: #674237;
+}
+
+#boneco[data-cabelo="coque"] {
+  --hair-color: #302b38;
+}
+
+.avatar-massa-cabelo {
+  fill: var(--hair-color, #302b38);
+}
+
+#boneco[data-camisa="azul"] {
+  --shirt-color: #4387e8;
+}
+
+#boneco[data-camisa="coral"] {
+  --shirt-color: #f07868;
+}
+
+#boneco[data-camisa="verde"] {
+  --shirt-color: #48a87c;
+}
+
+#boneco[data-camisa="amarela"] {
+  --shirt-color: #e8b83f;
+}
+
+#boneco[data-camisa="roxo"] {
+  --shirt-color: #7359b5;
+}
+
+.avatar-camiseta {
+  fill: var(--shirt-color, #2aaea6);
+}
+
+.avatar-bolso {
+  fill: rgba(245, 255, 250, 0.08);
+  stroke: rgba(245, 255, 250, 0.8);
+  stroke-width: 2;
+}
+
+.avatar-gola {
+  fill: #e8fbf7;
+}
+
+.avatar-costura-jaqueta {
+  fill: none;
+  stroke: #d9f5e5;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+#boneco[data-camisa="verde"] .avatar-costura-jaqueta {
+  display: inline;
+}
+
+#boneco[data-camisa="verde"] .avatar-bolso,
+#boneco[data-camisa="roxo"] .avatar-bolso {
+  display: none;
+}
+
+#boneco[data-camisa="roxo"] .avatar-moletom-capuz {
+  display: inline;
+}
+
+#boneco[data-camisa="coral"] .avatar-gola {
+  fill: #ffe6d8;
+}
+
+.avatar-calca {
+  fill: #344b68;
+}
+
+#boneco[data-calca="jeans"] .avatar-calca {
+  fill: #3476ad;
+}
+
+#boneco[data-calca="cargo"] .avatar-calca {
+  fill: #9f895d;
+}
+
+#boneco[data-calca="cargo"] .avatar-bolsos-cargo {
+  display: inline;
+  fill: #b59a69;
+  stroke: #766747;
+  stroke-width: 2;
+}
+
+.avatar-tenis {
+  fill: url(#tenis);
+}
+
+#boneco[data-calcado="vermelho"] .avatar-tenis {
+  fill: #c94f50;
+}
+
+#boneco[data-calcado="preto"] .avatar-tenis {
+  fill: #202933;
+}
+
+.avatar-acessorio {
+  pointer-events: none;
+}
+
+#boneco[data-acessorio="oculos"] .avatar-oculos,
+#boneco[data-acessorio="oculos-redondos"] .avatar-oculos-redondos,
+#boneco[data-acessorio="fones"] .avatar-fones,
+#boneco[data-acessorio="gravata"] .avatar-gravata {
+  display: inline;
+}
+
+#boneco.acenando .avatar-braco-direito {
+  transform-box: fill-box;
+  transform-origin: 15px 2px;
+  animation: aceno-2d 2.2s cubic-bezier(0.35, 0.05, 0.25, 1) 1;
+}
+
+#boneco.acenando .avatar-personagem {
+  animation: pulinho-2d 1s ease-out 1;
+}
+
+@keyframes aceno-2d {
+  0%, 88%, 100% { transform: rotate(0); }
+  17%, 48% { transform: rotate(-128deg); }
+  32%, 63% { transform: rotate(-99deg); }
+  75% { transform: rotate(-122deg); }
+}
+
+@keyframes pulinho-2d {
+  0%, 100% { transform: translateY(0); }
+  35% { transform: translateY(-8px); }
+  60% { transform: translateY(2px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #boneco.acenando .avatar-braco-direito {
+    animation-duration: 1.6s;
+  }
+
+  #boneco.acenando .avatar-personagem {
+    animation: none;
+  }
+}
+
+.catalogo-loja {
+  min-width: 0;
+}
+
+.saldo-loja {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 10px;
+  color: #a9c6ce;
+}
+
+.saldo-loja strong {
+  color: var(--cor-destaque);
+}
+
+.categorias-loja {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  padding: 2px 0;
+  scrollbar-width: thin;
+}
+
+.categoria-loja {
+  width: 100%;
+  min-height: 48px;
+  padding: 9px 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #b8cbd1;
+  text-align: left;
+  font-size: 0.76rem;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.categoria-loja.active {
+  border-color: var(--cor-borda);
+  background: rgba(43, 222, 253, 0.14);
+  color: var(--cor-destaque);
+}
+
+.contagem-itens {
+  margin: 0 0 8px;
+  color: #a9c6ce;
+  font-size: 0.8rem;
+}
+
+.titulo-categoria {
+  margin: 0 0 5px;
+  color: var(--cor-texto);
+  font-size: 1rem;
+}
+
+.lista-roupas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  max-height: 450px;
+  overflow-y: auto;
+  padding: 1px 4px 4px 1px;
+}
+
+.item-loja {
+  display: flex;
+  min-height: 134px;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid rgba(215, 249, 255, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.item-loja h3 {
+  margin: 0 0 4px;
+  font-size: 0.95rem;
+}
+
+.informacoes-item-loja {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: 34px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 10px;
+}
+
+.informacoes-item-loja h3,
+.informacoes-item-loja p {
+  grid-column: 2;
+}
+
+.amostra-roupa {
+  position: relative;
+  display: block;
+  width: 32px;
+  height: 30px;
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px 8px 4px 4px;
+  background: #4387e8;
+  clip-path: polygon(25% 0, 40% 13%, 60% 13%, 75% 0, 100% 20%, 85% 43%, 77% 36%, 77% 100%, 23% 100%, 23% 36%, 15% 43%, 0 20%);
+}
+
+.amostra-coral {
+  background: linear-gradient(135deg, #ff9c86, #cf5d58);
+}
+
+.amostra-verde {
+  background: linear-gradient(90deg, #287f67, #48a87c 45%, #d8f5df 49%, #48a87c 56%, #287f67);
+}
+
+.amostra-amarela {
+  background: linear-gradient(135deg, #ffe16b, #d69b24);
+}
+
+.amostra-roxo {
+  background: linear-gradient(135deg, #a18ae0, #6549a9);
+}
+
+.amostra-oculos {
+  height: 18px;
+  margin-top: 6px;
+  border: 3px solid #263f4c;
+  border-radius: 7px;
+  background: rgba(151, 221, 233, 0.35);
+  clip-path: none;
+}
+
+.amostra-oculos::after {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  width: 8px;
+  border-top: 2px solid #263f4c;
+  content: "";
+}
+
+.amostra-bone {
+  width: 25px;
+  height: 16px;
+  margin: 7px 0 0 3px;
+  border-radius: 15px 15px 4px 4px;
+  background: linear-gradient(145deg, #ffe16b, #d69b24);
+  clip-path: none;
+}
+
+.amostra-bone::after {
+  position: absolute;
+  right: -7px;
+  bottom: 0;
+  width: 21px;
+  height: 5px;
+  border-radius: 50%;
+  background: #c68e21;
+  content: "";
+}
+
+.amostra-gorro {
+  width: 27px;
+  height: 24px;
+  margin: 4px 0 0 2px;
+  border-radius: 18px 18px 5px 5px;
+  background: linear-gradient(145deg, #ff8880, #c9444c);
+  clip-path: none;
+}
+
+.amostra-gorro::after {
+  position: absolute;
+  right: -1px;
+  bottom: 0;
+  left: -1px;
+  height: 6px;
+  border-radius: 4px;
+  background: #f2c5b5;
+  content: "";
+}
+
+.amostra-categoria-cabelo {
+  width: 25px;
+  height: 25px;
+  margin-left: 3px;
+  border: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 60% 35%, #bd8a62, #573d37 70%);
+  clip-path: none;
+}
+
+.amostra-castanho.amostra-categoria-cabelo {
+  background: radial-gradient(circle at 60% 35%, #cf9865, #734329 70%);
+}
+
+.amostra-azul.amostra-categoria-cabelo {
+  background: radial-gradient(circle at 60% 35%, #74e6ef, #246c9b 70%);
+}
+
+.amostra-ondulado.amostra-categoria-cabelo {
+  background: repeating-radial-gradient(ellipse at 50% 100%, #9c725e 0 3px, #4d332d 4px 6px);
+}
+
+.amostra-afro.amostra-categoria-cabelo {
+  background: radial-gradient(circle at 35% 35%, #87604e, #302321 72%);
+  box-shadow: 0 0 0 3px #302321;
+}
+
+.amostra-coque.amostra-categoria-cabelo {
+  background: radial-gradient(circle at 50% 35%, #755247 0 45%, #302b38 48% 72%, transparent 75%);
+}
+
+.amostra-categoria-calcas {
+  width: 24px;
+  height: 28px;
+  margin-left: 4px;
+  border-radius: 5px 5px 4px 4px;
+  background: linear-gradient(90deg, #245b92, #4385bd 55%, #245b92);
+  clip-path: none;
+}
+
+.amostra-cargo.amostra-categoria-calcas {
+  background: linear-gradient(90deg, #7f704e, #b59a69 55%, #7f704e);
+}
+
+.amostra-cargo.amostra-categoria-calcas::after {
+  position: absolute;
+  right: 2px;
+  bottom: 5px;
+  width: 6px;
+  height: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 2px;
+  content: "";
+}
+
+.amostra-categoria-calcados {
+  width: 29px;
+  height: 17px;
+  margin: 5px 0 0 2px;
+  border-radius: 12px 12px 5px 5px;
+  background: linear-gradient(150deg, #ffffff, #b7c6cc);
+  clip-path: none;
+}
+
+.amostra-vermelho.amostra-categoria-calcados {
+  background: linear-gradient(150deg, #f17468, #b6323e);
+}
+
+.amostra-preto.amostra-categoria-calcados {
+  height: 23px;
+  margin-top: 1px;
+  border-radius: 7px 7px 4px 4px;
+  background: linear-gradient(90deg, #39434c, #141a20);
+}
+
+.amostra-categoria-acessorios {
+  border-radius: 7px;
+  background: transparent;
+  clip-path: none;
+}
+
+.amostra-oculos-redondos.amostra-categoria-acessorios {
+  width: 24px;
+  height: 24px;
+  margin: 3px 0 0 4px;
+  border: 3px solid #315365;
+  border-radius: 50%;
+}
+
+.amostra-fones.amostra-categoria-acessorios {
+  width: 25px;
+  height: 23px;
+  margin: 4px 0 0 3px;
+  border: 3px solid #3a687b;
+  border-bottom: 0;
+  border-radius: 16px 16px 0 0;
+}
+
+.amostra-fones.amostra-categoria-acessorios::after {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  left: -4px;
+  height: 9px;
+  border-right: 4px solid #3a687b;
+  border-left: 4px solid #3a687b;
+  content: "";
+}
+
+.amostra-gravata.amostra-categoria-acessorios {
+  width: 18px;
+  height: 28px;
+  margin: 1px 0 0 6px;
+  background: linear-gradient(145deg, #ff9c86, #cf5d58);
+  clip-path: polygon(25% 0, 75% 0, 65% 18%, 100% 100%, 50% 84%, 0 100%, 35% 18%);
+}
+
+.item-loja p {
+  margin: 0;
+  color: #a9c6ce;
+  font-size: 0.82rem;
+}
+
+.item-loja button {
+  width: 100%;
+  min-height: 36px;
+  padding: 8px 10px;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.item-loja button:disabled {
+  cursor: default;
+  opacity: 0.58;
+  transform: none;
+}
+
+.mensagem-loja {
+  min-height: 1.5em;
+  margin: 10px 0 0;
+  color: var(--cor-destaque);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 520px) {
+  body {
+    padding: 18px 12px;
+  }
+
+  .caixa-principal {
+    width: 100%;
+    padding: 22px 16px;
+  }
+
+  .area-diversidade {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .acoes-diversidade {
+    flex-direction: column;
+  }
+
+  .acoes-jogador {
+    flex-wrap: wrap;
+  }
+
+  .loja-overlay {
+    padding: 10px;
+  }
+
+  .loja-conteudo {
+    max-height: 94vh;
+    padding: 18px;
+  }
+
+  .conteudo-loja {
+    grid-template-columns: minmax(0, 1fr) minmax(210px, 0.9fr);
+    gap: 18px;
+  }
+
+  .categorias-loja {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 2px 0 8px;
+  }
+
+  .categoria-loja {
+    width: auto;
+    min-width: 112px;
+    min-height: 42px;
+    flex: 0 0 auto;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .area-boneco {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .catalogo-loja {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+
+  .area-boneco {
+    min-height: 350px;
+  }
+
+  .boneco {
+    transform: scale(0.92);
+  }
+
+  .lista-roupas {
+    max-height: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .conteudo-loja {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .area-boneco,
+  .catalogo-loja {
+    grid-column: 1;
+  }
+
+  .lista-roupas {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .boneco.acenando .braco-direito,
+  .fala-boneco.aparecendo {
+    animation-duration: 1ms;
+    animation-iteration-count: 1;
+  }
 }
